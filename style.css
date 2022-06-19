@@ -1,24 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap");
+
 * {
   margin: 0;
   box-sizing: border-box;
 }
 
 body {
-  display: flex;
-  flex-wrap: wrap;
-  font-family: sans-serif;
+  font-family: "Goldman", sans-serif;
+  overflow: hidden;
+  position: relative;
 }
 
 div {
   display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-end;
-  margin: .6rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .span-style {
   background: #ddd;
   color: #1c1c1c;
   border-radius: 50%;
-  padding: .5rem;
+  padding: 0.5rem;
+}
+
+form {
+  position: relative;
+  background-color: #f21b1b;
+  display: grid;
+  place-content: center;
+  width: 100%;
+  border-bottom: 15px solid black;
+}
+
+form::after {
+  position: absolute;
+  right: -60px;
+  bottom: -55px;
+  content: "";
+  display: block;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+form input {
+  font-family: inherit;
+  margin: 2rem 0;
+  padding: 1rem;
+  min-width: 350px;
+  border: none;
+  border-bottom: 3px solid black;
+  transition: all 150ms linear;
+}
+
+form input:focus {
+  outline: 5px solid white;
+}
+
+.character-info-wrapper {
+  border-top: 2px solid #1c1c1c;
+  width: 90%;
+  padding-top: 3rem;
+}
+
+.character-sprite {
+  outline: 5px solid #1c1c1c;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  width: 120px;
+  margin: 3rem 0;
+  margin-bottom: -20px;
+  z-index: 100;
+}
+
+.pokemon-logo-wrapper {
+  z-index: 1000;
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.pokemon-logo-wrapper img {
+  width: 100%;
+  height: auto;
 }

@@ -1,7 +1,5 @@
 const body = document.querySelector("body");
 
-const characterModalRoot = document.querySelector(".character-modal");
-
 const baseURL = `https://pokeapi.co/api/v2/pokemon/snorlax/`;
 
 export const fetchFunc = async () => {
@@ -13,22 +11,26 @@ export const fetchFunc = async () => {
     (ability) => ability.ability.name
   );
 
+  const characterOutput = await document.querySelector("#character-output");
+
   console.log(characterData);
-  characterModalRoot.innerHTML = `
-      <img src=${characterData.sprites.front_shiny} />
-      <div class="character-name">NAME: ${characterData.name}</div>
-      <span class="weight-span">WEIGHT: ${characterData.weight}</span>
-      <span class="base-experience-span">BASE EXPERIENCE: ${characterData.base_experience}</span>
-      <div class="stats-wrapper">
-        <div class="stat-span speed">${statName[0]} - ${baseStat[0]}</div>
-        <div class="stat-span special-defense">${statName[1]} - ${baseStat[1]}</div>
-        <div class="stat-span special-attack">${statName[2]} - ${baseStat[2]}</div>
-        <div class="stat-span defense">${statName[3]} - ${baseStat[3]}</div>
-        <div class="stat-span attack">${statName[4]} - ${baseStat[4]}</div>
-        <div class="stat-span hp">${statName[5]} - ${baseStat[5]}</div>
-      </div>
-      <div class="abilities-wrapper">
-        <div class="ability-span speed">ABILITIES: ${abilities}</div>
+  characterOutput.innerHTML = `
+      <img class="character-sprite" src=${characterData.sprites.front_shiny} />
+      <div class="character-info-wrapper">
+        <span class="character-name">NAME: ${characterData.name}</span>
+        <span class="weight-span">WEIGHT: ${characterData.weight}</span>
+        <span class="base-experience-span">BASE EXPERIENCE: ${characterData.base_experience}</span>
+        <div class="stats-wrapper">
+          <div class="stat-span speed">${statName[0]} - ${baseStat[0]}</div>
+          <div class="stat-span special-defense">${statName[1]} - ${baseStat[1]}</div>
+          <div class="stat-span special-attack">${statName[2]} - ${baseStat[2]}</div>
+          <div class="stat-span defense">${statName[3]} - ${baseStat[3]}</div>
+          <div class="stat-span attack">${statName[4]} - ${baseStat[4]}</div>
+          <div class="stat-span hp">${statName[5]} - ${baseStat[5]}</div>
+        </div>
+        <div class="abilities-wrapper">
+          <div class="ability-span speed">ABILITIES: ${abilities}</div>
+        </div>
       </div>
       `;
 };
