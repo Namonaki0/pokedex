@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap");
+* {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Goldman", sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form-wrapper {
+  position: relative;
+  background-color: #f21b1b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  border-bottom: 15px solid black;
+}
+
+.form-wrapper form {
+  position: relative;
+  margin: 2rem 0;
+  width: 400px;
+  height: auto;
+}
+
+.form-wrapper form input {
+  position: relative;
+  font-family: inherit;
+  padding: 1rem;
+  width: 400px;
+  border: none;
+  border-bottom: 3px solid black;
+  -webkit-transition: all 150ms linear;
+  transition: all 150ms linear;
+}
+
+.form-wrapper form input:focus {
+  outline: 5px solid white;
+}
+
+.form-wrapper form button {
+  all: unset;
+  position: absolute;
+  right: 0;
+  padding: .9rem;
+  background-color: #1c1c1c;
+  color: white;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.form-wrapper form button:hover {
+  cursor: pointer;
+  background-color: #2d2d2d;
+}
+
+.form-wrapper::after {
+  position: absolute;
+  right: -60px;
+  bottom: -55px;
+  content: "";
+  display: block;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+#character-output {
+  text-transform: uppercase;
+}
+
+.character-sprite-wrapper {
+  width: 100%;
+  border-bottom: 5px solid rgba(156, 156, 156, 0.272);
+  -webkit-animation: borderEffect 2s linear infinite;
+          animation: borderEffect 2s linear infinite;
+}
+
+@-webkit-keyframes borderEffect {
+  0% {
+    border-bottom: 5px solid rgba(156, 156, 156, 0.272);
+  }
+  50% {
+    border-bottom: 5px solid rgba(19, 19, 19, 0.272);
+  }
+  100% {
+    border-bottom: 5px solid rgba(156, 156, 156, 0.272);
+  }
+}
+
+@keyframes borderEffect {
+  0% {
+    border-bottom: 5px solid rgba(156, 156, 156, 0.272);
+  }
+  50% {
+    border-bottom: 5px solid rgba(19, 19, 19, 0.272);
+  }
+  100% {
+    border-bottom: 5px solid rgba(156, 156, 156, 0.272);
+  }
+}
+
+.character-sprite-wrapper .character-sprite {
+  border-bottom: 5px solid #000000d8;
+  background-color: white;
+  width: 120px;
+  margin: 1.5rem 0 -20px;
+  z-index: 100;
+}
+
+.character-info-wrapper {
+  width: 95%;
+  padding-top: 1rem;
+  text-align: left;
+}
+
+.character-info-wrapper .character-name {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.character-info-wrapper .character-primary-info,
+.character-info-wrapper .character-primary-abilities {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  color: white;
+}
+
+.character-info-wrapper .character-primary-info span,
+.character-info-wrapper .character-primary-abilities span {
+  background: #3d6fdb;
+  outline: 2px solid white;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.character-info-wrapper .character-primary-info {
+  border-bottom: 1.5px solid white;
+}
+
+.character-info-wrapper .character-secondary-abilities {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.character-info-wrapper .character-secondary-abilities .stat-span {
+  outline: 1px solid white;
+  background: #3d6fdb;
+  width: 100%;
+  color: white;
+  padding: 8px;
+}
+
+.character-info-wrapper .character-secondary-abilities .abilities {
+  text-align: center;
+}
+
+.pokemon-logo-wrapper {
+  z-index: 1000;
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  margin-top: -15px;
+}
+
+.pokemon-logo-wrapper img {
+  width: 100%;
+  height: auto;
+}
+/*# sourceMappingURL=styles.css.map */
