@@ -11,8 +11,10 @@ $pokemon-red: #f21b1b;
 
 body {
   font-family: "Goldman", sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
+  font-size: .8rem;
+  max-width: 540px;
 }
 
 div {
@@ -21,13 +23,6 @@ div {
   align-items: center;
   justify-content: center;
 }
-
-// .span-style {
-//   background: #ddd;
-//   color: #1c1c1c;
-//   border-radius: 50%;
-//   padding: 0.5rem;
-// }
 
 .form-wrapper {
   position: relative;
@@ -62,7 +57,7 @@ div {
       all: unset;
       position: absolute;
       right: 0;
-      padding: .9rem;
+      padding: 1rem;
       background-color: #1c1c1c;
       color: $main-cl;
       transition: all 150ms ease-in-out;
@@ -75,25 +70,17 @@ div {
 
   }
 
-  &::after {
-    position: absolute;
-    right: -60px;
-    bottom: -55px;
-    content: "";
-    display: block;
-    width: 95px;
-    height: 95px;
-    border-radius: 50%;
-    background-color: black;
-  }
 }
 
 #character-output {
   text-transform: uppercase;
+  letter-spacing: 1.2px;
 }
 
 .character-sprite-wrapper {
   width: 100%;
+  min-height: 130px;
+  height: 130px;
   border-bottom: 5px solid rgba(156, 156, 156, 0.272);
   animation: borderEffect 2s linear infinite;
 
@@ -112,10 +99,22 @@ div {
   .character-sprite {
     border-bottom: 5px solid #000000d8;
     background-color: $main-cl;
-    // box-shadow: 0 0 5px rgba(1, 1, 1, 0.927);
     width: 120px;
+    min-height: 120px;
     margin: 1.5rem 0 -20px;
     z-index: 100;
+    animation: characterInputEffect 150ms linear;
+
+     @keyframes characterInputEffect {
+    0% {
+       opacity: 0;
+       transform: translateY(-10%);
+    }
+    100% {
+       opacity: 1;
+       transform: translateY(0%);
+    }
+  }
   }
 }
 
@@ -130,35 +129,30 @@ div {
     margin-top: 0;
   }
 
+  .attack-and-defense {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    color: $main-cl;
+  }
+
   .character-primary-info,
   .character-primary-abilities {
     display: flex;
     flex-direction: row;
     width: 100%;
     color: $main-cl;
-
-    span {
-      background: $accent-cl;
-      outline: 2px solid $main-cl;
-      flex: 1;
-      height: auto;
-      padding: 10px;
-      text-align: center;
-    }
-  }
-
-  .character-primary-info {
-    border-bottom: 1.5px solid $main-cl;
   }
 
   .character-secondary-abilities {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
+  }
 
-    .stat-span {
+  .stat-span {
       outline: 1px solid $main-cl;
       background: $accent-cl;
       width: 100%;
@@ -169,7 +163,6 @@ div {
     .abilities {
       text-align: center;
     }
-  }
 }
 
 .pokemon-logo-wrapper {
@@ -177,7 +170,7 @@ div {
   width: 300px;
   height: 200px;
   margin: 0 auto;
-  margin-top: -15px;
+  padding-top: 2rem;
 
   img {
     width: 100%;

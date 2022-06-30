@@ -7,8 +7,10 @@
 
 body {
   font-family: "Goldman", sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
+  font-size: .8rem;
+  max-width: 540px;
 }
 
 div {
@@ -69,7 +71,7 @@ div {
   all: unset;
   position: absolute;
   right: 0;
-  padding: .9rem;
+  padding: 1rem;
   background-color: #1c1c1c;
   color: white;
   -webkit-transition: all 150ms ease-in-out;
@@ -81,24 +83,15 @@ div {
   background-color: #2d2d2d;
 }
 
-.form-wrapper::after {
-  position: absolute;
-  right: -60px;
-  bottom: -55px;
-  content: "";
-  display: block;
-  width: 95px;
-  height: 95px;
-  border-radius: 50%;
-  background-color: black;
-}
-
 #character-output {
   text-transform: uppercase;
+  letter-spacing: 1.2px;
 }
 
 .character-sprite-wrapper {
   width: 100%;
+  min-height: 130px;
+  height: 130px;
   border-bottom: 5px solid rgba(156, 156, 156, 0.272);
   -webkit-animation: borderEffect 2s linear infinite;
           animation: borderEffect 2s linear infinite;
@@ -132,8 +125,37 @@ div {
   border-bottom: 5px solid #000000d8;
   background-color: white;
   width: 120px;
+  min-height: 120px;
   margin: 1.5rem 0 -20px;
   z-index: 100;
+  -webkit-animation: characterInputEffect 150ms linear;
+          animation: characterInputEffect 150ms linear;
+}
+
+@-webkit-keyframes characterInputEffect {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-10%);
+            transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+
+@keyframes characterInputEffect {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-10%);
+            transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
 }
 
 .character-info-wrapper {
@@ -146,6 +168,18 @@ div {
   font-size: 1.5rem;
   margin-bottom: 15px;
   margin-top: 0;
+}
+
+.character-info-wrapper .attack-and-defense {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  color: white;
 }
 
 .character-info-wrapper .character-primary-info,
@@ -161,30 +195,14 @@ div {
   color: white;
 }
 
-.character-info-wrapper .character-primary-info span,
-.character-info-wrapper .character-primary-abilities span {
-  background: #3d6fdb;
-  outline: 2px solid white;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  height: auto;
-  padding: 10px;
-  text-align: center;
-}
-
-.character-info-wrapper .character-primary-info {
-  border-bottom: 1.5px solid white;
-}
-
 .character-info-wrapper .character-secondary-abilities {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -194,7 +212,7 @@ div {
   width: 100%;
 }
 
-.character-info-wrapper .character-secondary-abilities .stat-span {
+.character-info-wrapper .stat-span {
   outline: 1px solid white;
   background: #3d6fdb;
   width: 100%;
@@ -202,7 +220,7 @@ div {
   padding: 8px;
 }
 
-.character-info-wrapper .character-secondary-abilities .abilities {
+.character-info-wrapper .abilities {
   text-align: center;
 }
 
@@ -211,7 +229,7 @@ div {
   width: 300px;
   height: 200px;
   margin: 0 auto;
-  margin-top: -15px;
+  padding-top: 2rem;
 }
 
 .pokemon-logo-wrapper img {

@@ -1,22 +1,20 @@
 const form = document.querySelector("form");
-const input = document.querySelector("form input");
+const input = document.querySelector("input");
 
 let pokemon_name = "pikachu";
 let baseURL = `https://pokeapi.co/api/v2/pokemon/${pokemon_name}/`;
 
-input.addEventListener("change", (e) => {
-  if (e.target.value === "") {
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if (input.value === "") {
     pokemon_name = "pikachu";
   } else {
-    pokemon_name = e.target.value;
+    pokemon_name = input.value;
   }
   baseURL = `https://pokeapi.co/api/v2/pokemon/${pokemon_name}/`;
 
   fetchFunc(baseURL);
-});
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
 });
 
 const fetchFunc = async () => {
@@ -36,21 +34,27 @@ const fetchFunc = async () => {
       </div>
       <div class="character-info-wrapper">
         <span class="character-name">${characterData.name}</span>
+
          <div class="character-primary-abilities">
           <span class="stat-span hp">${statName[0]}: ${baseStat[0]}</span>
+          <span class="stat-span base-experience-span">BASE EXPERIENCE: ${characterData.base_experience}</span>
+        </div>
+
+        <div class="attack-and-defense">
           <span class="stat-span attack">${statName[1]}: ${baseStat[1]}</span>
           <span class="stat-span defense">${statName[2]}: ${baseStat[2]}</span>
         </div>
+
         <div class="character-primary-info">
-          <span class="character-weight">WEIGHT: ${characterData.weight}</span>
-          <span class="base-experience-span">BASE EXPERIENCE: ${characterData.base_experience}</span>
-        </div>
-        <div class="character-secondary-abilities">
           <span class="stat-span special-attack">${statName[3]}: ${baseStat[3]}</span>
           <span class="stat-span special-defense">${statName[4]}: ${baseStat[4]}</span>
-          <span class="stat-span speed">${statName[5]}: ${baseStat[5]}</span>
-          <span class="stat-span abilities">ABILITIES: ${abilities}</span>
         </div>
+        <div class="character-secondary-abilities">
+          <span class="stat-span character-weight">WEIGHT: ${characterData.weight}</span>
+          <span class="stat-span speed">${statName[5]}: ${baseStat[5]}</span>
+          
+        </div>
+            <span class="stat-span abilities">ABILITIES: ${abilities}</span>
       </div>
       `;
 };
