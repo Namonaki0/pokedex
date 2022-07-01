@@ -10,7 +10,8 @@ body {
   overflow-x: hidden;
   position: relative;
   font-size: .8rem;
-  max-width: 540px;
+  min-width: 556px;
+  max-width: 556px;
 }
 
 div {
@@ -76,11 +77,16 @@ div {
   color: white;
   -webkit-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
+  z-index: 100;
 }
 
 .form-wrapper form button:hover {
   cursor: pointer;
   background-color: #2d2d2d;
+}
+
+.error-state {
+  outline: 15px solid orange;
 }
 
 #character-output {

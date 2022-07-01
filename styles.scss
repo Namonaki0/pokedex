@@ -14,7 +14,8 @@ body {
   overflow-x: hidden;
   position: relative;
   font-size: .8rem;
-  max-width: 540px;
+  min-width: 556px;
+  max-width: 556px;
 }
 
 div {
@@ -61,6 +62,7 @@ div {
       background-color: #1c1c1c;
       color: $main-cl;
       transition: all 150ms ease-in-out;
+      z-index: 100;
 
       &:hover {
         cursor: pointer;
@@ -71,6 +73,10 @@ div {
   }
 
 }
+
+.error-state {
+        outline: 15px solid orange;
+      }
 
 #character-output {
   text-transform: uppercase;
@@ -142,6 +148,7 @@ div {
     flex-direction: row;
     width: 100%;
     color: $main-cl;
+
   }
 
   .character-secondary-abilities {
