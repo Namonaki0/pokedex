@@ -13,7 +13,7 @@ body {
   font-family: "Goldman", sans-serif;
   overflow-x: hidden;
   position: relative;
-  font-size: .8rem;
+  font-size: 0.8rem;
   min-width: 556px;
   max-width: 556px;
 }
@@ -35,48 +35,80 @@ div {
   border-bottom: 15px solid black;
 
   form {
-     position: relative;
-     margin: 2rem 0;
+    position: relative;
+    margin: 2rem 0;
     width: 400px;
     height: auto;
 
-    input {
-      position: relative;
-      font-family: inherit;
-      padding: 1rem;
-      width: 400px;
-      border: none;
-      border-bottom: 3px solid black;
+    .input-wrapper {
+      input {
+        position: relative;
+        font-family: inherit;
+        padding: 1rem;
+        width: 400px;
+        border: none;
+        border-bottom: 3px solid black;
+        transition: all 150ms linear;
+
+        &:focus {
+          outline: 5px solid $main-cl;
+        }
+      }
+
+      button {
+        all: unset;
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 1rem;
+        background-color: #1c1c1c;
+        color: $main-cl;
+        transition: all 150ms ease-in-out;
+        z-index: 100;
+
+        &:hover {
+          cursor: pointer;
+          background-color: #2d2d2d;
+        }
+      }
+    }
+
+    .error-message-span {
+      visibility: hidden;
+      opacity: 0;
+      color: $pokemon-red;
+      background-color: $main-cl;
+      padding: 0.5rem 1rem;
+      margin-top: 5px;
+      display: inline-block;
+      float: right;
+      transform: translateX(-10px);
       transition: all 150ms linear;
-  
-      &:focus {
-        outline: 5px solid $main-cl;
+
+      &.error-message-span-effect {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0);
       }
     }
-  
-    button {
-      all: unset;
-      position: absolute;
-      right: 0;
-      padding: 1rem;
-      background-color: #1c1c1c;
-      color: $main-cl;
-      transition: all 150ms ease-in-out;
-      z-index: 100;
-
-      &:hover {
-        cursor: pointer;
-        background-color: #2d2d2d;;
-      }
-    }
-
   }
 
-}
+  .error-state {
+    animation: errorStateEffect 1.5s linear infinite;
+  }
 
-.error-state {
-        outline: 15px solid orange;
-      }
+  @keyframes errorStateEffect {
+    0% {
+      outline: 5px solid rgb(255, 255, 255);
+    }
+    50% {
+      outline: 5px solid rgb(255, 0, 0);
+    }
+    100% {
+      outline: 5px solid rgb(255, 255, 255);
+    }
+  }
+}
 
 #character-output {
   text-transform: uppercase;
@@ -92,13 +124,13 @@ div {
 
   @keyframes borderEffect {
     0% {
-       border-bottom: 5px solid rgba(156, 156, 156, 0.272);
+      border-bottom: 5px solid rgba(156, 156, 156, 0.272);
     }
     50% {
-       border-bottom: 5px solid rgba(19, 19, 19, 0.272);
+      border-bottom: 5px solid rgba(19, 19, 19, 0.272);
     }
     100% {
-       border-bottom: 5px solid rgba(156, 156, 156, 0.272);
+      border-bottom: 5px solid rgba(156, 156, 156, 0.272);
     }
   }
 
@@ -111,16 +143,16 @@ div {
     z-index: 100;
     animation: characterInputEffect 150ms linear;
 
-     @keyframes characterInputEffect {
-    0% {
-       opacity: 0;
-       transform: translateY(-10%);
+    @keyframes characterInputEffect {
+      0% {
+        opacity: 0;
+        transform: translateY(-10%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0%);
+      }
     }
-    100% {
-       opacity: 1;
-       transform: translateY(0%);
-    }
-  }
   }
 }
 
@@ -148,7 +180,6 @@ div {
     flex-direction: row;
     width: 100%;
     color: $main-cl;
-
   }
 
   .character-secondary-abilities {
@@ -160,16 +191,16 @@ div {
   }
 
   .stat-span {
-      outline: 1px solid $main-cl;
-      background: $accent-cl;
-      width: 100%;
-      color: $main-cl;
-      padding: 8px;
-    }
+    outline: 1px solid $main-cl;
+    background: $accent-cl;
+    width: 100%;
+    color: $main-cl;
+    padding: 8px;
+  }
 
-    .abilities {
-      text-align: center;
-    }
+  .abilities {
+    text-align: center;
+  }
 }
 
 .pokemon-logo-wrapper {

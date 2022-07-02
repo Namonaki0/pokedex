@@ -1,8 +1,9 @@
 const form = document.querySelector("form");
 const input = document.querySelector("input");
+const errorMessageSpan = document.querySelector(".error-message-span");
 
 let pokemon_name = "pikachu";
-let baseURL = `https://pokeapi.co/api/v2/pokemon/${pokemon_name}/`;
+let baseURL = `https://pokeapi.co/api/v2/pokemon/`;
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -12,14 +13,13 @@ form.addEventListener("submit", (e) => {
   } else {
     pokemon_name = input.value;
   }
-  baseURL = `https://pokeapi.co/api/v2/pokemon/${pokemon_name}/`;
 
-  fetchFunc(baseURL);
+  fetchFunc();
 });
 
 const fetchFunc = async () => {
   try {
-    const fetchURL = await fetch(baseURL);
+    const fetchURL = await fetch(`${baseURL}${pokemon_name}`);
     const characterData = await fetchURL.json();
     const statName = await characterData.stats.map((stat) => stat.stat.name);
     const baseStat = await characterData.stats.map((stat) => stat.base_stat);
@@ -31,6 +31,7 @@ const fetchFunc = async () => {
       return;
     } else {
       input.classList.remove("error-state");
+      errorMessageSpan.classList.remove("error-message-span-effect");
 
       const characterOutput = document.querySelector("#character-output");
 
@@ -67,10 +68,9 @@ const fetchFunc = async () => {
   } catch (err) {
     console.error("CHARACTER NOT FOUND");
     input.classList.add("error-state");
+    errorMessageSpan.classList.add("error-message-span-effect");
   }
 };
-
-document.addEventListener("DOMContentLoaded", fetchFunc);
 
 fetchFunc();
 
