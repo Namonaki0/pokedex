@@ -1,7 +1,7 @@
 {
     "name": "Pokedex",
     "short_name": "Pokedex",
-    "start_url": "/",
+    "start_url": ".",
     "background_color": "#fff",
     "theme_color": "#F21B1B",
     "display": "standalone", 

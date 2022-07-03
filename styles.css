@@ -10,8 +10,7 @@ body {
   overflow-x: hidden;
   position: relative;
   font-size: 0.8rem;
-  min-width: 556px;
-  max-width: 556px;
+  max-width: 600px;
 }
 
 div {
@@ -30,7 +29,7 @@ div {
           justify-content: center;
 }
 
-.form-wrapper {
+.input-outer-wrapper {
   position: relative;
   background-color: #f21b1b;
   display: -webkit-box;
@@ -46,14 +45,18 @@ div {
   border-bottom: 15px solid black;
 }
 
-.form-wrapper form {
+.input-outer-wrapper .input-inner-wrapper {
   position: relative;
   margin: 2rem 0;
   width: 400px;
   height: auto;
 }
 
-.form-wrapper form .input-wrapper input {
+.input-outer-wrapper .input-inner-wrapper .input-wrapper {
+  position: relative;
+}
+
+.input-outer-wrapper .input-inner-wrapper .input-wrapper input {
   position: relative;
   font-family: inherit;
   padding: 1rem;
@@ -64,15 +67,16 @@ div {
   transition: all 150ms linear;
 }
 
-.form-wrapper form .input-wrapper input:focus {
+.input-outer-wrapper .input-inner-wrapper .input-wrapper input:focus {
   outline: 5px solid white;
 }
 
-.form-wrapper form .input-wrapper button {
+.input-outer-wrapper .input-inner-wrapper .input-wrapper button {
   all: unset;
   position: absolute;
   right: 0;
   top: 0;
+  bottom: 0;
   padding: 1rem;
   background-color: #1c1c1c;
   color: white;
@@ -81,12 +85,12 @@ div {
   z-index: 100;
 }
 
-.form-wrapper form .input-wrapper button:hover {
+.input-outer-wrapper .input-inner-wrapper .input-wrapper button:hover {
   cursor: pointer;
   background-color: #2d2d2d;
 }
 
-.form-wrapper form .error-message-span {
+.input-outer-wrapper .input-inner-wrapper .error-message-span {
   visibility: hidden;
   opacity: 0;
   color: #f21b1b;
@@ -94,21 +98,22 @@ div {
   padding: 0.5rem 1rem;
   margin-top: 5px;
   display: inline-block;
-  float: right;
+  margin-left: auto;
+  margin-right: -5px;
   -webkit-transform: translateX(-10px);
           transform: translateX(-10px);
   -webkit-transition: all 150ms linear;
   transition: all 150ms linear;
 }
 
-.form-wrapper form .error-message-span.error-message-span-effect {
+.input-outer-wrapper .input-inner-wrapper .error-message-span.error-message-span-effect {
   visibility: visible;
   opacity: 1;
   -webkit-transform: translateX(0);
           transform: translateX(0);
 }
 
-.form-wrapper .error-state {
+.input-outer-wrapper .error-state {
   -webkit-animation: errorStateEffect 1.5s linear infinite;
           animation: errorStateEffect 1.5s linear infinite;
 }

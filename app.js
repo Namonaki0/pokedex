@@ -1,13 +1,13 @@
-const form = document.querySelector("form");
+//? GLOBAL
 const input = document.querySelector("input");
+const searchBtn = document.querySelector("#search-btn");
 const errorMessageSpan = document.querySelector(".error-message-span");
+const characterOutput = document.querySelector("#character-output");
 
 let pokemon_name = "pikachu";
 let baseURL = `https://pokeapi.co/api/v2/pokemon/`;
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
+searchBtn.addEventListener("click", () => {
   if (input.value === "") {
     pokemon_name = "pikachu";
   } else {
@@ -17,25 +17,30 @@ form.addEventListener("submit", (e) => {
   fetchFunc();
 });
 
+input.addEventListener("keyup", (e) => {
+  if (e.keyCode === 13) {
+    searchBtn.click();
+  }
+});
+
 const fetchFunc = async () => {
   try {
     const fetchURL = await fetch(`${baseURL}${pokemon_name}`);
     const characterData = await fetchURL.json();
     const statName = await characterData.stats.map((stat) => stat.stat.name);
     const baseStat = await characterData.stats.map((stat) => stat.base_stat);
-    const abilities = await characterData.abilities.map((ability) =>
-      ability.ability.name.replace(/,/g, ", ")
+    const abilities = await characterData.abilities.map(
+      (ability) => ability.ability.name
     );
 
     if (!fetchURL.ok) {
       return;
-    } else {
-      input.classList.remove("error-state");
-      errorMessageSpan.classList.remove("error-message-span-effect");
+    }
 
-      const characterOutput = document.querySelector("#character-output");
+    input.classList.remove("error-state");
+    errorMessageSpan.classList.remove("error-message-span-effect");
 
-      characterOutput.innerHTML = `
+    characterOutput.innerHTML = `
         <div class="character-sprite-wrapper">
           <img class="character-sprite" src=${characterData.sprites.front_shiny} />
         </div>
@@ -64,7 +69,6 @@ const fetchFunc = async () => {
               <span class="stat-span abilities">ABILITIES: ${abilities}</span>
         </div>
         `;
-    }
   } catch (err) {
     console.error("CHARACTER NOT FOUND");
     input.classList.add("error-state");
