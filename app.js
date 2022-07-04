@@ -2,7 +2,6 @@
 const input = document.querySelector("input");
 const searchBtn = document.querySelector("#search-btn");
 const errorMessageSpan = document.querySelector(".error-message-span");
-const characterOutput = document.querySelector("#character-output");
 
 let pokemon_name = "pikachu";
 let baseURL = `https://pokeapi.co/api/v2/pokemon/`;
@@ -11,10 +10,10 @@ searchBtn.addEventListener("click", () => {
   if (input.value === "") {
     pokemon_name = "pikachu";
   } else {
-    pokemon_name = input.value;
+    pokemon_name = input.value.toLowerCase();
   }
 
-  fetchFunc();
+  fetchFunc(pokemon_name);
 });
 
 input.addEventListener("keyup", (e) => {
@@ -23,7 +22,7 @@ input.addEventListener("keyup", (e) => {
   }
 });
 
-const fetchFunc = async () => {
+const fetchFunc = async (pokemon_name) => {
   try {
     const fetchURL = await fetch(`${baseURL}${pokemon_name}`);
     const characterData = await fetchURL.json();
@@ -40,33 +39,57 @@ const fetchFunc = async () => {
     input.classList.remove("error-state");
     errorMessageSpan.classList.remove("error-message-span-effect");
 
+    const characterOutput = document.querySelector("#character-output");
+
     characterOutput.innerHTML = `
         <div class="character-sprite-wrapper">
-          <img class="character-sprite" src=${characterData.sprites.front_shiny} />
+          <img class="character-sprite" src=${
+            characterData.sprites.front_shiny
+          } />
         </div>
         <div class="character-info-wrapper">
           <span class="character-name">${characterData.name}</span>
   
-           <div class="character-primary-abilities">
-            <span class="stat-span hp">${statName[0]}: ${baseStat[0]}</span>
-            <span class="stat-span base-experience-span">BASE EXPERIENCE: ${characterData.base_experience}</span>
-          </div>
+          <div class="character-info-inner-wrapper">
+            <div class="character-primary-abilities">
+              <span class="stat-span hp">${statName[0]}: ${baseStat[0]}</span>
+              <span class="stat-span base-experience-span">BASE XP: ${
+                characterData.base_experience
+              }</span>
+            </div>
   
-          <div class="attack-and-defense">
-            <span class="stat-span attack">${statName[1]}: ${baseStat[1]}</span>
-            <span class="stat-span defense">${statName[2]}: ${baseStat[2]}</span>
-          </div>
+            <div class="attack-and-defense">
+              <span class="stat-span attack">${statName[1]}: ${
+      baseStat[1]
+    }</span>
+              <span class="stat-span defense">${statName[2]}: ${
+      baseStat[2]
+    }</span>
+            </div>
   
-          <div class="character-primary-info">
-            <span class="stat-span special-attack">${statName[3]}: ${baseStat[3]}</span>
-            <span class="stat-span special-defense">${statName[4]}: ${baseStat[4]}</span>
-          </div>
-          <div class="character-secondary-abilities">
-            <span class="stat-span character-weight">WEIGHT: ${characterData.weight}</span>
-            <span class="stat-span speed">${statName[5]}: ${baseStat[5]}</span>
-            
-          </div>
-              <span class="stat-span abilities">ABILITIES: ${abilities}</span>
+            <div class="character-primary-info">
+              <span class="stat-span special-attack">SP ATTACK: ${
+                baseStat[3]
+              }</span>
+              <span class="stat-span special-defense">SP DEFENSE: ${
+                baseStat[4]
+              }</span>
+            </div>
+            <div class="character-secondary-abilities">
+              <span class="stat-span character-weight">WEIGHT: ${
+                characterData.weight
+              }</span>
+              <span class="stat-span speed">${statName[5]}: ${
+      baseStat[5]
+    }</span>
+            </div>
+            <div class="abilities-wrapper">
+              <span class="abilities">ABILITIES: </span>
+              <span class="abilities-span">${abilities
+                .toString()
+                .replace(/,/g, ", ")}</span>
+            </div>
+          <div>
         </div>
         `;
   } catch (err) {
@@ -76,7 +99,7 @@ const fetchFunc = async () => {
   }
 };
 
-fetchFunc();
+fetchFunc(pokemon_name);
 
 //? SERVICE WORKER REGISTRATION
 if ("serviceWorker" in navigator) {
@@ -86,7 +109,6 @@ if ("serviceWorker" in navigator) {
       console.log("SW registered");
     })
     .catch((error) => {
-      console.error("SW Registration failed!");
-      console.error(error);
+      console.error("SW Registration failed!" - error);
     });
 }

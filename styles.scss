@@ -14,7 +14,6 @@ body {
   overflow-x: hidden;
   position: relative;
   font-size: 0.8rem;
-  // min-width: 580px;
   max-width: 600px;
 }
 
@@ -74,7 +73,6 @@ div {
           background-color: #2d2d2d;
         }
       }
-
     }
 
     .error-message-span {
@@ -162,7 +160,7 @@ div {
 }
 
 .character-info-wrapper {
-  width: 95%;
+  width: 98%;
   padding-top: 1rem;
   text-align: left;
 
@@ -172,39 +170,67 @@ div {
     margin-top: 0;
   }
 
-  .attack-and-defense {
+  .character-info-inner-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-flow: wrap;
     width: 100%;
-    color: $main-cl;
-  }
-
-  .character-primary-info,
-  .character-primary-abilities {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    color: $main-cl;
-  }
-
-  .character-secondary-abilities {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-
-  .stat-span {
-    outline: 1px solid $main-cl;
-    background: $accent-cl;
-    width: 100%;
-    color: $main-cl;
+    border: 2px solid rgba(192, 192, 192, 0.167);
     padding: 8px;
-  }
 
-  .abilities {
-    text-align: center;
+    .attack-and-defense {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      color: $main-cl;
+    }
+
+    .character-primary-info,
+    .character-primary-abilities {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      color: $main-cl;
+    }
+
+    .character-secondary-abilities {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .abilities-wrapper {
+      width: 100%;
+      text-align: center;
+    }
+
+    .stat-span,
+    .abilities,
+    .abilities-span {
+      outline: 1px solid $main-cl;
+      background: $accent-cl;
+      width: 100%;
+      color: $main-cl;
+    }
+
+    .abilities-span,
+    .stat-span {
+      padding: 8px;
+    }
+
+    .abilities {
+      background-color: rgb(82, 126, 222);
+      margin: 1px 0 0;
+      padding: 6px 0;
+    }
+
+    .abilities-span {
+      display: block;
+      font-weight: 500;
+      background: $accent-cl;
+      outline: none;
+    }
   }
 }
 
@@ -220,3 +246,5 @@ div {
     height: auto;
   }
 }
+
+

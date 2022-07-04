@@ -218,7 +218,7 @@ div {
 }
 
 .character-info-wrapper {
-  width: 95%;
+  width: 98%;
   padding-top: 1rem;
   text-align: left;
 }
@@ -229,7 +229,33 @@ div {
   margin-top: 0;
 }
 
-.character-info-wrapper .attack-and-defense {
+.character-info-wrapper .character-info-inner-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  width: 100%;
+  border: 2px solid rgba(192, 192, 192, 0.167);
+  padding: 8px;
+}
+
+.character-info-wrapper .character-info-inner-wrapper .attack-and-defense {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: white;
+}
+
+.character-info-wrapper .character-info-inner-wrapper .character-primary-info,
+.character-info-wrapper .character-info-inner-wrapper .character-primary-abilities {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -241,20 +267,7 @@ div {
   color: white;
 }
 
-.character-info-wrapper .character-primary-info,
-.character-info-wrapper .character-primary-abilities {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: 100%;
-  color: white;
-}
-
-.character-info-wrapper .character-secondary-abilities {
+.character-info-wrapper .character-info-inner-wrapper .character-secondary-abilities {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -271,16 +284,36 @@ div {
   width: 100%;
 }
 
-.character-info-wrapper .stat-span {
+.character-info-wrapper .character-info-inner-wrapper .abilities-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.character-info-wrapper .character-info-inner-wrapper .stat-span,
+.character-info-wrapper .character-info-inner-wrapper .abilities,
+.character-info-wrapper .character-info-inner-wrapper .abilities-span {
   outline: 1px solid white;
   background: #3d6fdb;
   width: 100%;
   color: white;
+}
+
+.character-info-wrapper .character-info-inner-wrapper .abilities-span,
+.character-info-wrapper .character-info-inner-wrapper .stat-span {
   padding: 8px;
 }
 
-.character-info-wrapper .abilities {
-  text-align: center;
+.character-info-wrapper .character-info-inner-wrapper .abilities {
+  background-color: #527ede;
+  margin: 1px 0 0;
+  padding: 6px 0;
+}
+
+.character-info-wrapper .character-info-inner-wrapper .abilities-span {
+  display: block;
+  font-weight: 500;
+  background: #3d6fdb;
+  outline: none;
 }
 
 .pokemon-logo-wrapper {
