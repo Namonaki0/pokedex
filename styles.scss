@@ -35,7 +35,7 @@ div {
 
   .input-inner-wrapper {
     position: relative;
-    margin: 2rem 0;
+    margin: 2rem 0 1rem;
     width: 400px;
     height: auto;
 
@@ -80,7 +80,7 @@ div {
       opacity: 0;
       color: $pokemon-red;
       background-color: $main-cl;
-      padding: 0.5rem 1rem;
+      padding: 0.3rem 1rem;
       margin-top: 5px;
       display: inline-block;
       margin-left: auto;

@@ -7,19 +7,15 @@ let pokemon_name = "pikachu";
 let baseURL = `https://pokeapi.co/api/v2/pokemon/`;
 
 searchBtn.addEventListener("click", () => {
-  if (input.value === "") {
-    pokemon_name = "pikachu";
-  } else {
-    pokemon_name = input.value.toLowerCase();
-  }
+  input.value === ""
+    ? (pokemon_name = "pikachu")
+    : (pokemon_name = input.value.toLowerCase());
 
   fetchFunc(pokemon_name);
 });
 
 input.addEventListener("keyup", (e) => {
-  if (e.keyCode === 13) {
-    searchBtn.click();
-  }
+  if (e.keyCode === 13) searchBtn.click();
 });
 
 const fetchFunc = async (pokemon_name) => {
@@ -32,19 +28,19 @@ const fetchFunc = async (pokemon_name) => {
       (ability) => ability.ability.name
     );
 
-    if (!fetchURL.ok) {
-      return;
-    }
+    if (!fetchURL.ok) return;
 
+    //? REMOVE ERROR SPAN WHEN INVOKED
     input.classList.remove("error-state");
     errorMessageSpan.classList.remove("error-message-span-effect");
+    //? REMOVE ERROR SPAN WHEN INVOKED --- END
 
     const characterOutput = document.querySelector("#character-output");
 
     characterOutput.innerHTML = `
         <div class="character-sprite-wrapper">
           <img class="character-sprite" src=${
-            characterData.sprites.front_shiny
+            characterData.sprites.front_default
           } />
         </div>
         <div class="character-info-wrapper">
@@ -93,9 +89,10 @@ const fetchFunc = async (pokemon_name) => {
         </div>
         `;
   } catch (err) {
-    console.error("CHARACTER NOT FOUND");
-    input.classList.add("error-state");
+    //? ADDS ERROR SPAN
     errorMessageSpan.classList.add("error-message-span-effect");
+    input.classList.add("error-state");
+    console.error("CHARACTER NOT FOUND");
   }
 };
 
